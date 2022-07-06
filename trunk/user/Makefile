@@ -122,7 +122,7 @@ dir_y							+= rc
 dir_$(CONFIG_FIRMWARE_INCLUDE_ANTFS)			+= antfs
 dir_$(CONFIG_FIRMWARE_INCLUDE_NAPT66)			+= napt66
 dir_$(CONFIG_FIRMWARE_INCLUDE_SFE)			+= shortcut-fe
-dir_y							+= infosvr
+dir_$(CONFIG_FIRMWARE_INCLUDE_INFOSVR)			+= infosvr
 dir_$(CONFIG_FIRMWARE_INCLUDE_INADYN)			+= inadyn
 dir_y							+= miniupnpd
 dir_y							+= dnsmasq
@@ -197,6 +197,10 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_MENTOHUST)		+= mentohust
 dir_$(CONFIG_FIRMWARE_INCLUDE_SMARTDNS)			+= smartdns
 dir_$(CONFIG_FIRMWARE_INCLUDE_CADDY)			+= caddy
 dir_$(CONFIG_FIRMWARE_INCLUDE_xTUN) 			+= xTun
+dir_$(CONFIG_FIRMWARE_INCLUDE_KOOLPROXY)		+= koolproxy
+dir_$(CONFIG_FIRMWARE_INCLUDE_ADBYBY)			+= adbyby
+dir_$(CONFIG_FIRMWARE_INCLUDE_ALIDDNS)			+= aliddns
+dir_$(CONFIG_FIRMWARE_INCLUDE_NVPPROXY)			+= nvpproxy
 
 ifeq ($(CONFIG_FIRMWARE_INCLUDE_WING),y)
 dir_y 			+= wing
@@ -237,11 +241,6 @@ ifneq (,$(filter y,$(CONFIG_FIRMWARE_INCLUDE_NFSD) $(CONFIG_FIRMWARE_INCLUDE_NFS
 dir_y							+= rpcbind
 endif
 endif
-
-dir_$(CONFIG_FIRMWARE_INCLUDE_KOOLPROXY)		+= koolproxy
-dir_$(CONFIG_FIRMWARE_INCLUDE_ADBYBY)			+= adbyby
-dir_$(CONFIG_FIRMWARE_INCLUDE_ALIDDNS)			+= aliddns
-dir_$(CONFIG_FIRMWARE_INCLUDE_NVPPROXY)			+= nvpproxy
 
 ifdef CONFIG_MTD_UBI
 ifneq ($(STORAGE_ENABLED),y)
