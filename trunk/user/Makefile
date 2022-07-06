@@ -102,15 +102,17 @@ dir_y							+= ralinkiappd
 dir_y							+= busybox
 dir_y							+= iptables
 dir_$(CONFIG_FIRMWARE_INCLUDE_COREMARK)			+= coremark
+
 ifneq ($(CONFIG_WITHOUT_KERNEL),y)
 dir_$(CONFIG_FIRMWARE_INCLUDE_IPSET)			+= ipset
 dir_y							+= accel-pptpd
 endif
+
 dir_y							+= ebtables
 dir_y							+= iproute2
 dir_y							+= wireless_tools
 dir_y							+= shared
-dir_$(STORAGE_ENABLED)					+= libdisk
+
 dir_y							+= nvram
 dir_y							+= mtd_write
 dir_y							+= networkmap
@@ -148,6 +150,7 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_V2RAY)	        += v2ray
 dir_$(CONFIG_FIRMWARE_INCLUDE_XRAY)	        += xray
 dir_$(CONFIG_FIRMWARE_INCLUDE_TROJAN)	        += trojan
 endif
+
 dir_$(CONFIG_FIRMWARE_INCLUDE_SSOBFS)			+= simple-obfs
 dir_$(CONFIG_FIRMWARE_INCLUDE_ZEROTIER)			+= zerotier
 dir_$(CONFIG_FIRMWARE_INCLUDE_WYY)			+= unblockmusic
@@ -163,16 +166,19 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_MTR)			+= mtr
 dir_$(CONFIG_FIRMWARE_INCLUDE_SOCAT)			+= socat
 dir_$(CONFIG_FIRMWARE_INCLUDE_SRELAY)			+= srelay
 dir_$(CONFIG_FIRMWARE_INCLUDE_TUNSAFE)			+= tunsafe
+
 ifeq ($(CONFIG_FIRMWARE_INCLUDE_WIREGUARD),y)
 dir_y += wireguard-go
 dir_y += wireguard-tools
 endif
+
 ifeq ($(CONFIG_FIRMWARE_INCLUDE_SMBD36),y)
 dir_$(SAMBA_ENABLED)					+= samba36
 dir_y							+= wsdd2
 else
 dir_$(SAMBA_ENABLED)					+= samba3
 endif
+
 dir_$(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS)		+= chnroute
 dir_$(CONFIG_FIRMWARE_INCLUDE_TTYD)			+= ttyd
 dir_$(FRP_ENABLE)					+= frp
@@ -191,6 +197,7 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_MENTOHUST)		+= mentohust
 dir_$(CONFIG_FIRMWARE_INCLUDE_SMARTDNS)			+= smartdns
 dir_$(CONFIG_FIRMWARE_INCLUDE_CADDY)			+= caddy
 dir_$(CONFIG_FIRMWARE_INCLUDE_xTUN) 			+= xTun
+
 ifeq ($(CONFIG_FIRMWARE_INCLUDE_WING),y)
 dir_y 			+= wing
 dir_y 			+= ipt2socks
@@ -212,28 +219,31 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_LPRD)			+= LPRng
 dir_$(CONFIG_FIRMWARE_INCLUDE_U2EC)			+= u2ec
 dir_$(CONFIG_FIRMWARE_INCLUDE_DUMP1090)	+= dump1090
 endif
+
 ifeq ($(STORAGE_ENABLED),y)
-dir_$(CONFIG_FIRMWARE_INCLUDE_NFSD)			+= nfs-utils
-ifneq (,$(filter y,$(CONFIG_FIRMWARE_INCLUDE_NFSD) $(CONFIG_FIRMWARE_INCLUDE_NFSC)))
-dir_y							+= rpcbind
-endif
+dir_y							+= libdisk
 dir_y							+= optware
 dir_y							+= util-linux
 dir_$(FS_EXT_ENABLED)					+= e2fsprogs
 dir_$(FS_FAT_ENABLED)					+= dosfstools
 dir_$(FS_NTFS_ENABLED)					+= ntfs-3g
+dir_$(CONFIG_FIRMWARE_INCLUDE_NFSD)			+= nfs-utils
 dir_$(CONFIG_FIRMWARE_INCLUDE_PARTED)			+= parted
 dir_$(CONFIG_FIRMWARE_INCLUDE_FTPD)			+= vsftpd
 dir_$(CONFIG_FIRMWARE_INCLUDE_MINIDLNA)			+= minidlna
 dir_$(CONFIG_FIRMWARE_INCLUDE_FIREFLY)			+= firefly
 dir_$(CONFIG_FIRMWARE_INCLUDE_TRANSMISSION)		+= transmission
 dir_$(CONFIG_FIRMWARE_INCLUDE_ARIA)			+= aria2
+ifneq (,$(filter y,$(CONFIG_FIRMWARE_INCLUDE_NFSD) $(CONFIG_FIRMWARE_INCLUDE_NFSC)))
+dir_y							+= rpcbind
+endif
 endif
 
 dir_$(CONFIG_FIRMWARE_INCLUDE_KOOLPROXY)		+= koolproxy
 dir_$(CONFIG_FIRMWARE_INCLUDE_ADBYBY)			+= adbyby
 dir_$(CONFIG_FIRMWARE_INCLUDE_ALIDDNS)			+= aliddns
 dir_$(CONFIG_FIRMWARE_INCLUDE_NVPPROXY)			+= nvpproxy
+
 ifdef CONFIG_MTD_UBI
 ifneq ($(STORAGE_ENABLED),y)
 dir_y							+= optware
