@@ -79,10 +79,6 @@ SAMBA_ENABLED=y
 endif
 endif
 
-ifeq ($(CONFIG_FIRMWARE_INCLUDE_REDSOCKS),y)
-REDSOCKS_ENABLED=y
-endif
-
 ifneq ($(filter y,$(CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD) $(CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT) $(CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER)),)
 SOFTETHERVPN_ENABLE=y
 endif
@@ -98,6 +94,7 @@ endif
 dir_y =
 dir_n =
 dir_  =
+
 dir_y							+= ralinkiappd
 dir_y							+= busybox
 dir_y							+= iptables
@@ -124,6 +121,7 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_NAPT66)			+= napt66
 dir_$(CONFIG_FIRMWARE_INCLUDE_SFE)			+= shortcut-fe
 dir_$(CONFIG_FIRMWARE_INCLUDE_INFOSVR)			+= infosvr
 dir_$(CONFIG_FIRMWARE_INCLUDE_INADYN)			+= inadyn
+
 dir_y							+= miniupnpd
 dir_y							+= dnsmasq
 dir_y							+= igmpproxy
@@ -137,6 +135,7 @@ dir_y							+= pppoe
 dir_y							+= xl2tpd
 dir_y							+= lldt
 dir_y							+= scripts
+
 dir_$(OPENSSH_ENABLED)					+= openssh
 dir_$(DROPBEAR_ENABLED)					+= dropbear
 dir_$(FRP_ENABLE)					+= frp
@@ -152,8 +151,6 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS)              += resolveip
 dir_$(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS)	        += dns2tcp
 dir_$(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS)		+= chnroute
 dir_$(CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME)      	+= adguardhome
-
-
 dir_$(CONFIG_FIRMWARE_INCLUDE_SSOBFS)			+= simple-obfs
 dir_$(CONFIG_FIRMWARE_INCLUDE_ZEROTIER)			+= zerotier
 dir_$(CONFIG_FIRMWARE_INCLUDE_WYY)			+= unblockmusic
@@ -192,6 +189,7 @@ ifeq ($(CONFIG_FIRMWARE_INCLUDE_WIREGUARD),y)
 dir_y += wireguard-go
 dir_y += wireguard-tools
 endif
+
 ifeq ($(CONFIG_FIRMWARE_INCLUDE_WING),y)
 dir_y 			+= wing
 dir_y 			+= ipt2socks
