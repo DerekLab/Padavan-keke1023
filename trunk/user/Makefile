@@ -112,7 +112,7 @@ dir_y							+= ebtables
 dir_y							+= iproute2
 dir_y							+= wireless_tools
 dir_y							+= shared
-
+dir_$(STORAGE_ENABLED)							+= libdisk
 dir_y							+= nvram
 dir_y							+= mtd_write
 dir_y							+= networkmap
@@ -221,7 +221,6 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_DUMP1090)	+= dump1090
 endif
 
 ifeq ($(STORAGE_ENABLED),y)
-dir_y							+= libdisk
 dir_y							+= optware
 dir_y							+= util-linux
 dir_$(FS_EXT_ENABLED)					+= e2fsprogs
