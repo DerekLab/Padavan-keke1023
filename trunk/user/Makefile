@@ -138,6 +138,8 @@ dir_y							+= xl2tpd
 dir_$(CONFIG_FIRMWARE_INCLUDE_RPL2TP)			+= rp-l2tp
 dir_y							+= lldt
 dir_y							+= scripts
+dir_$(CONFIG_FIRMWARE_INCLUDE_ANTFS)			+= antfs
+dir_$(CONFIG_FIRMWARE_INCLUDE_NTFS_3G)			+= ntfs-3g
 dir_$(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS)		+= skipdbv2
 dir_$(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS)		+= lua51
 dir_$(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS)		+= ipt2socks
@@ -167,17 +169,9 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_SOCAT)			+= socat
 dir_$(CONFIG_FIRMWARE_INCLUDE_SRELAY)			+= srelay
 dir_$(CONFIG_FIRMWARE_INCLUDE_TUNSAFE)			+= tunsafe
 
-ifeq ($(CONFIG_FIRMWARE_INCLUDE_WIREGUARD),y)
-dir_y += wireguard-go
-dir_y += wireguard-tools
-endif
 
-ifeq ($(CONFIG_FIRMWARE_INCLUDE_SMBD36),y)
-dir_$(SAMBA_ENABLED)					+= samba36
-dir_y							+= wsdd2
-else
-dir_$(SAMBA_ENABLED)					+= samba3
-endif
+
+
 
 dir_$(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS)		+= chnroute
 dir_$(CONFIG_FIRMWARE_INCLUDE_TTYD)			+= ttyd
@@ -197,18 +191,34 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_MENTOHUST)		+= mentohust
 dir_$(CONFIG_FIRMWARE_INCLUDE_SMARTDNS)			+= smartdns
 dir_$(CONFIG_FIRMWARE_INCLUDE_CADDY)			+= caddy
 dir_$(CONFIG_FIRMWARE_INCLUDE_xTUN) 			+= xTun
+dir_$(CONFIG_FIRMWARE_INCLUDE_REDSOCKS)			+= redsocks
+dir_$(CONFIG_FIRMWARE_INCLUDE_3PROXY)			+= 3proxy
 dir_$(CONFIG_FIRMWARE_INCLUDE_KOOLPROXY)		+= koolproxy
 dir_$(CONFIG_FIRMWARE_INCLUDE_ADBYBY)			+= adbyby
 dir_$(CONFIG_FIRMWARE_INCLUDE_ALIDDNS)			+= aliddns
 dir_$(CONFIG_FIRMWARE_INCLUDE_NVPPROXY)			+= nvpproxy
 
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_WIREGUARD),y)
+dir_y += wireguard-go
+dir_y += wireguard-tools
+endif
 ifeq ($(CONFIG_FIRMWARE_INCLUDE_WING),y)
 dir_y 			+= wing
 dir_y 			+= ipt2socks
 endif
 
-dir_$(CONFIG_FIRMWARE_INCLUDE_REDSOCKS)			+= redsocks
-dir_$(CONFIG_FIRMWARE_INCLUDE_3PROXY)			+= 3proxy
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS),y)
+dir_$(CONFIG_FIRMWARE_INCLUDE_V2RAY)	        += v2ray
+dir_$(CONFIG_FIRMWARE_INCLUDE_XRAY)	        += xray
+dir_$(CONFIG_FIRMWARE_INCLUDE_TROJAN)	        += trojan
+endif
+
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_SMBD36),y)
+dir_$(SAMBA_ENABLED)					+= samba36
+dir_y							+= wsdd2
+else
+dir_$(SAMBA_ENABLED)					+= samba3
+endif
 
 ifdef CONFIG_BLK_DEV_SD
 dir_$(CONFIG_FIRMWARE_INCLUDE_HDPARM)			+= hdparm
@@ -229,8 +239,6 @@ dir_y							+= optware
 dir_y							+= util-linux
 dir_$(FS_EXT_ENABLED)					+= e2fsprogs
 dir_$(FS_FAT_ENABLED)					+= dosfstools
-dir_$(CONFIG_FIRMWARE_INCLUDE_ANTFS)			+= antfs
-dir_$(CONFIG_FIRMWARE_INCLUDE_NTFS_3G)			+= ntfs-3g
 dir_$(CONFIG_FIRMWARE_INCLUDE_NFSD)			+= nfs-utils
 dir_$(CONFIG_FIRMWARE_INCLUDE_PARTED)			+= parted
 dir_$(CONFIG_FIRMWARE_INCLUDE_FTPD)			+= vsftpd
