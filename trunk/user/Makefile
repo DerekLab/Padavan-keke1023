@@ -98,30 +98,17 @@ dir_  =
 dir_y							+= ralinkiappd
 dir_y							+= busybox
 dir_y							+= iptables
-dir_$(CONFIG_FIRMWARE_INCLUDE_COREMARK)			+= coremark
-
-ifneq ($(CONFIG_WITHOUT_KERNEL),y)
-dir_$(CONFIG_FIRMWARE_INCLUDE_IPSET)			+= ipset
-dir_y							+= accel-pptpd
-endif
-
 dir_y							+= ebtables
 dir_y							+= iproute2
 dir_y							+= wireless_tools
 dir_y							+= shared
-dir_$(STORAGE_ENABLED)							+= libdisk
+dir_y							+= libdisk
 dir_y							+= nvram
 dir_y							+= mtd_write
 dir_y							+= networkmap
 dir_y							+= httpd
 dir_y							+= www
 dir_y							+= rc
-
-dir_$(CONFIG_FIRMWARE_INCLUDE_NAPT66)			+= napt66
-dir_$(CONFIG_FIRMWARE_INCLUDE_SFE)			+= shortcut-fe
-dir_$(CONFIG_FIRMWARE_INCLUDE_INFOSVR)			+= infosvr
-dir_$(CONFIG_FIRMWARE_INCLUDE_INADYN)			+= inadyn
-
 dir_y							+= miniupnpd
 dir_y							+= dnsmasq
 dir_y							+= igmpproxy
@@ -135,6 +122,17 @@ dir_y							+= pppoe
 dir_y							+= xl2tpd
 dir_y							+= lldt
 dir_y							+= scripts
+
+ifneq ($(CONFIG_WITHOUT_KERNEL),y)
+dir_$(CONFIG_FIRMWARE_INCLUDE_IPSET)			+= ipset
+dir_$(CONFIG_FIRMWARE_INCLUDE_PPTPD)			+= accel-pptpd
+endif
+
+dir_$(CONFIG_FIRMWARE_INCLUDE_COREMARK)			+= coremark
+dir_$(CONFIG_FIRMWARE_INCLUDE_NAPT66)			+= napt66
+dir_$(CONFIG_FIRMWARE_INCLUDE_SFE)			+= shortcut-fe
+dir_$(CONFIG_FIRMWARE_INCLUDE_INFOSVR)			+= infosvr
+dir_$(CONFIG_FIRMWARE_INCLUDE_INADYN)			+= inadyn
 
 dir_$(OPENSSH_ENABLED)					+= openssh
 dir_$(DROPBEAR_ENABLED)					+= dropbear
